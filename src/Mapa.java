@@ -2,28 +2,28 @@ import java.util.*;
 public class Mapa{
     protected int largura;
     protected int altura;
-    ArrayList<ArrayList<Tile>> mapa = new ArrayList<>();
+    ArrayList<ArrayList<Cenario>> mapa = new ArrayList<>();
     public Mapa(int l, int a){
         largura = l;
         altura = a;
         gerarMapa();
-        gerarCenario(Tile.arvore, 3, 5,7, true);
-        gerarCenario(Tile.agua, 1, 7,9, true);
-        gerarCenario(Tile.montanha, 4, 3,5, true);
+        gerarCenario(Cenario.arvore, 3, 5,7, true);
+        gerarCenario(Cenario.agua, 1, 7,9, true);
+        gerarCenario(Cenario.montanha, 4, 3,5, true);
     }
 
     public void gerarMapa(){
         for(int linha = 0; linha < altura; linha++){
-            ArrayList<Tile> linhas = new ArrayList<>();
+            ArrayList<Cenario> linhas = new ArrayList<>();
             for (int coluna = 0; coluna < largura; coluna++) {
-                linhas.add(Tile.planice);
+                linhas.add(Cenario.planice);
             }
             mapa.add(linhas);
         }
 
     }
 
-    public void gerarCenario(Tile tile, int blocos, int tamanhoMinimo, int tamanhoMaximo, boolean irregular){
+    public void gerarCenario(Cenario tile, int blocos, int tamanhoMinimo, int tamanhoMaximo, boolean irregular){
         for (int i = 0; i < blocos; i++) {
             Random gerador = new Random();
             int x_inicial = 0;
@@ -56,10 +56,10 @@ public class Mapa{
             System.out.print("=");
         }
         System.out.println("X");
-        for (ArrayList<Tile> linha : mapa) {
+        for (ArrayList<Cenario> linha : mapa) {
             System.out.print("|");
-            for (Tile tile : linha) {
-                System.out.print(tile);
+            for (Cenario c : linha) {
+                System.out.print(c);
             }
             System.out.println("|");
         }
