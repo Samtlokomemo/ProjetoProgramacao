@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 public class Mapa{
     protected int largura;
@@ -7,6 +11,7 @@ public class Mapa{
         largura = l;
         altura = a;
         gerarMapa();
+        //gerarCenario(Cenario.jogador, 1, 1,1, false);
         gerarCenario(Cenario.arvore, 3, 5,7, true);
         gerarCenario(Cenario.agua, 1, 7,9, true);
         gerarCenario(Cenario.montanha, 4, 3,5, true);
@@ -49,27 +54,20 @@ public class Mapa{
         }
     }
 
-    public void mostrarMapa(){
-        //Fazer a linha de cima
-        System.out.print("X");
+    @Override
+    public String toString() {
+        StringBuilder line = new StringBuilder();
         for (int i = 0; i < largura; i++) {
-            System.out.print("=");
+            line.append("=");
         }
-        System.out.println("X");
+        StringBuilder mapaString = new StringBuilder();
         for (ArrayList<Cenario> linha : mapa) {
-            System.out.print("|");
+            mapaString.append("|");
             for (Cenario c : linha) {
-                System.out.print(c);
+                mapaString.append(c);
             }
-            System.out.println("|");
+            mapaString.append("|\n");
         }
-        //Fazer a linha de baixo
-        System.out.print("X");
-        for (int i = 0; i < largura; i++) {
-            System.out.print("=");
-        }
-        System.out.print("X");
-
+        return "X" + line + "X\n" + mapaString + "X" + line + "X";
     }
-
 }
